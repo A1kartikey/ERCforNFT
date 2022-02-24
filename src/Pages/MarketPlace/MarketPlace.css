@@ -1,0 +1,29 @@
+.market-place{
+    /* width:100vw;
+    height: 100vh; */
+    background-color: #2C2C2D;
+    font-family: 'Lato', sans-serif;
+    /* position: fixed */
+}
+.row{
+    margin:0;
+    width: 100%;
+}
+.col-md-12{
+    padding:0;
+}
+.market-place .header{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.market-place .custom-card-body{
+    width:90%;
+    position: relative;
+    border-radius: 5px;
+    background-color: #4A4A4B;
+    color:#fff;
+    padding:1rem;
+    /* overflow-y: scroll; */
+    margin-bottom: 1rem;
+}
