@@ -28,6 +28,7 @@ const connectSuccess2 = (payload) => {
 };
 
 const connectSuccess3 = (payload) => {
+  console.log('Market Place payload - ',payload)
   return {
     type: "CONNECTION_SUCCESS3",
     payload: payload,
@@ -82,14 +83,14 @@ export const connect = () => {
           });
           // Add listeners end
         } else {
-          dispatch(connectFailed("Change network to Polygon."));
+          dispatch(connectFailed("Relode."));
         }
 
         //Smart Contract 2
         const NetworkData2 = await SmartContract2.networks[networkId];
         if (NetworkData2) {
           const SmartContractObj = new web3.eth.Contract(
-            SmartContract.abi,
+            SmartContract2.abi,
             NetworkData2.address
           );
               
@@ -117,7 +118,7 @@ export const connect = () => {
         const NetworkData3 = await SmartContract3.networks[networkId];
         if (NetworkData3) {
           const SmartContractObj = new web3.eth.Contract(
-            SmartContract.abi,
+            SmartContract3.abi,
             NetworkData3.address
           );
               

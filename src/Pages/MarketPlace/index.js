@@ -3,6 +3,7 @@ import './MarketPlace.css';
 import { useDispatch, useSelector } from "react-redux";
 import { AiTwotoneCopy } from 'react-icons/ai';
 
+
 export const MarketPlace =()=>{
     const [myState,SetmyState] = useState({
         bidding_tokenid:'',
@@ -14,13 +15,13 @@ export const MarketPlace =()=>{
 
     })
     const storeData = useSelector((state) => state.data);
-    const blockchain = useSelector((state) => state.blockchain);
+    const blockchain = useSelector((state) => {console.log('checking bchain',state.blockchain); return state.blockchain});
 
     useEffect(()=>{SetmyState({...myState, bidding_bid:storeData.nft_token})},[storeData])
     // const storeData = useSelector((state) => { SetmyState({...myState, bidding_bid:state.data.nft_token})});
-
+    
     const listForNftFunction = () => {
-        console.log('Approver running ... ')
+        console.log('Approver running ... ',myState.listNFTforsale_tokenid, blockchain.account3)
         blockchain.smartContract3.methods
         .listNFTforsale(myState.listNFTforsale_tokenid)
         .send({ from: blockchain.account3})

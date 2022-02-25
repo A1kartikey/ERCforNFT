@@ -192,7 +192,9 @@ export const Wallet =()=>{
               Mint
             </StyledButton>}
             <s.SpacerLarge />
-            {metaResponseImg.link1!='' && <button className="btn btn-secondary mt-3" onClick={()=> history.push('/nft-market-place')}>Navigate To MarketPlace</button>}
+            {/* {metaResponseImg.link1!='' &&  */}
+            <button className="btn btn-secondary mt-3" onClick={()=> history.push('/nft-market-place')}>Navigate To MarketPlace</button>
+            {/* } */}
          
           { metaResponseImg.link1=='' && <input type="file" accept="image/png, image/svg, image/jpeg" onChange={(e)=>{
             
