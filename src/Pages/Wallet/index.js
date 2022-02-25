@@ -8,6 +8,7 @@ import styled from "styled-components";
 import { create } from "ipfs-http-client";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { useHistory } from "react-router";
+import { FaFolderOpen } from 'react-icons/fa';
 
 const ipfsClient = create("https://ipfs.infura.io:5001/api/v0");
 
@@ -188,15 +189,24 @@ export const Wallet =()=>{
                 e.preventDefault();
                 startMintingProcess();
               }}
+              className="btn btn-secondary"
             >
               Mint
             </StyledButton>}
             <s.SpacerLarge />
             {/* {metaResponseImg.link1!='' &&  */}
-            <button className="btn btn-secondary mt-3" onClick={()=> history.push('/nft-market-place')}>Navigate To MarketPlace</button>
+            {/* <button className="btn btn-secondary mt-3" onClick={()=> history.push('/nft-market-place')}>Navigate To MarketPlace</button> */}
             {/* } */}
          
-          { metaResponseImg.link1=='' && <input type="file" accept="image/png, image/svg, image/jpeg" onChange={(e)=>{
+          { metaResponseImg.link1=='' && 
+          
+          <label htmlFor="uploadFiles" className="btn mt-2" >
+                                <div><FaFolderOpen color="#2F84E9" size={60} style={{cursor:'pointer'}}></FaFolderOpen></div>
+                                <div style={{fontSize:'small'}}><span style={{color:'#B4B4B4'}}>Drag & Drop your files here or </span><span style={{color:'#0071A9',cursor:'pointer'}}>Browse</span></div>
+                                {/* <input type="file" name="file" id="uploadFiles" name="additionalDocuments" onChange={this.handleChange} multiple/> */}
+
+                                
+          <input type="file" style={{display:'none'}} name="file" id="uploadFiles" accept="image/png, image/svg, image/jpeg" onChange={(e)=>{
             
             const file = e.target.files[0];
             file.arrayBuffer().then(buff => {
@@ -226,7 +236,11 @@ export const Wallet =()=>{
             console.log(reader.readAsDataURL(file))
             // SetmyFile(reader.readAsDataURL(file));
             
-          }}/>}
+          }}/>
+          </label>
+          
+          
+          }
           {/* history.push('/nft-market-place') */}
 
           {status=="successfully minted your NFT :) !" && <div><span>Your NFT Token ID : </span><span>{myState.nftToken}</span></div>}

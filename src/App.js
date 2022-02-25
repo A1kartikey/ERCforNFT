@@ -5,7 +5,9 @@ import "./App.css";
 import { EmptyLayout } from "./Layout/EmptyLayout/EmptyLayout";
 import { Wallet } from "./Pages/Wallet";
 import { MarketPlace } from "./Pages/MarketPlace";
+import { BiddingPlace } from "./Pages/BiddingPlace";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 function App() {
@@ -16,7 +18,7 @@ function App() {
       <Switch>
         <RouteWithLayout layout={EmptyLayout} path="/" exact component={Wallet}></RouteWithLayout>
         <RouteWithLayout layout={EmptyLayout} path="/nft-market-place"  component={MarketPlace}></RouteWithLayout>
-
+        <RouteWithLayout layout={EmptyLayout} path="/nft-bidding-place"  component={BiddingPlace}></RouteWithLayout>
       </Switch>
     </Router>
   );

@@ -27,3 +27,13 @@
     /* overflow-y: scroll; */
     margin-bottom: 1rem;
 }
+
+.menu-hover{
+    border-bottom:1px solid #2C2C2D;
+    font-size:.8rem;
+    cursor:pointer;
+    border-bottom:1px solid #2C2C2D;
+}
+.menu-hover:hover{
+background-color: #2C2C2D;
+}
