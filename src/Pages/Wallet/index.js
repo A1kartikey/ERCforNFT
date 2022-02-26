@@ -245,7 +245,7 @@ export const Wallet =()=>{
 
           {status=="successfully minted your NFT :) !" && <div><span>Your NFT Token ID : </span><span>{myState.nftToken}</span></div>}
           {/* {status=="successfully minted your NFT :) !" &&  */}
-          <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken()}>Allow your token on market place</button>
+          <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken()}>Allow your NFT token on market place</button>
           
           {/* {status=="successfully minted your NFT :) !"  &&  */}
           <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken2()}>Allow your coins on market place</button>

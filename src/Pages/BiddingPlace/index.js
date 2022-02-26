@@ -133,22 +133,22 @@ export const BiddingPlace =()=>{
                             <div className='row'>
                                 {console.log("-- ",myState.bidding_tokenid,myState.bidding_bid)}
                                 <div className='col-md-12'>
-                                    Bidding
+                                    Place your Bid
                                 </div>
                                 <div className='col-md-5'>
-                                    <div style={{widthL:'100%',float:'right'}}>_tokenid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Token Id </div>
                                 </div>
                                 <div className='col-md-7'>
-                                    <input type="number" value={myState.bidding_tokenid} onChange={(e)=>SetmyState({...myState,bidding_tokenid:e.target.value})} placeholder='unit256' className='form-control' />
+                                    <input type="number" value={myState.bidding_tokenid} onChange={(e)=>SetmyState({...myState,bidding_tokenid:e.target.value})} placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-5 mt-2'>
-                                    <div style={{widthL:'100%',float:'right'}}>_bid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Bid</div>
                                 </div>
                                 <div className='col-md-7 mt-2'>
-                                    <input type="number"  value={myState.bidding_bid} onChange={(e)=>SetmyState({...myState,bidding_bid:e.target.value})}  placeholder='unit256' className='form-control' />
+                                    <input type="number"  value={myState.bidding_bid} onChange={(e)=>SetmyState({...myState,bidding_bid:e.target.value})}  placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-12 mt-2'>
-                                    <button className='btn btn-warning' onClick={biddingFunc} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
+                                    <button className='btn btn-warning' onClick={biddingFunc} style={{float:'right'}}>Transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
                                 </div>
                             </div>
 

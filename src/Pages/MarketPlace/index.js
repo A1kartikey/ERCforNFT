@@ -137,13 +137,13 @@ export const MarketPlace =()=>{
 
                             <div className='row mt-3'>
                                 <div className='col-md-12'>
-                                    listNFTforsale
+                                    List NFT for sale
                                 </div>
                                 <div className='col-md-5'>
-                                    <div style={{widthL:'100%',float:'right'}}>_tokenid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Token Id</div>
                                 </div>
                                 <div className='col-md-7'>
-                                    <input type="number"  value={myState.listNFTforsale_tokenid} onChange={(e)=>SetmyState({...myState,listNFTforsale_tokenid:e.target.value})}  placeholder='unit256' className='form-control' />
+                                    <input type="number"  value={myState.listNFTforsale_tokenid} onChange={(e)=>SetmyState({...myState,listNFTforsale_tokenid:e.target.value})}  placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-12 mt-2'>
                                     <button className='btn btn-warning'onClick={()=>listForNftFunction()} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
@@ -152,13 +152,13 @@ export const MarketPlace =()=>{
 
                             <div className='row mt-3'>
                                 <div className='col-md-12'>
-                                    nftBuy
+                                    Transfer NFT
                                 </div>
                                 <div className='col-md-5'>
-                                    <div style={{widthL:'100%',float:'right'}}>_tokenid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Token Id</div>
                                 </div>
                                 <div className='col-md-7'>
-                                    <input type="number"  value={myState.nftBuy_tokenid} onChange={(e)=>SetmyState({...myState,nftBuy_tokenid:e.target.value})}  placeholder='unit256' className='form-control' />
+                                    <input type="number"  value={myState.nftBuy_tokenid} onChange={(e)=>SetmyState({...myState,nftBuy_tokenid:e.target.value})}  placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-12 mt-2'>
                                     <button className='btn btn-warning' onClick={buyNftFunc} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
@@ -167,13 +167,13 @@ export const MarketPlace =()=>{
 
                             <div className='row mt-3'>
                                 <div className='col-md-12'>
-                                    stopBid
+                                    Stop Bid
                                 </div>
                                 <div className='col-md-5'>
-                                    <div style={{widthL:'100%',float:'right'}}>_tokenid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Token Id</div>
                                 </div>
                                 <div className='col-md-7'>
-                                    <input type="number" value={myState.stopBid_tokenid} onChange={(e)=>SetmyState({...myState,stopBid_tokenid:e.target.value})}   placeholder='unit256' className='form-control' />
+                                    <input type="number" value={myState.stopBid_tokenid} onChange={(e)=>SetmyState({...myState,stopBid_tokenid:e.target.value})}   placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-12 mt-2'>
                                     <button className='btn btn-warning' onClick={stopBiddingFunc} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
@@ -184,13 +184,13 @@ export const MarketPlace =()=>{
                                     {/* <button className='btn btn-info'>contractaddress</button> */}
                                 </div>
                                 <div className='col-md-12 mt-2'>
-                                    getHeigestBid
+                                    Get Highest Bid
                                 </div>
                                 <div className='col-md-5'>
-                                    <div style={{widthL:'100%',float:'right'}}>_tokenid</div>
+                                    <div style={{widthL:'100%',float:'right'}}>Token Id</div>
                                 </div>
                                 <div className='col-md-7'>
-                                    <input type="number"  value={myState.getHeigestBid_tokenid} onChange={(e)=>SetmyState({...myState,getHeigestBid_tokenid:e.target.value})}  placeholder='unit256' className='form-control' />
+                                    <input type="number"  value={myState.getHeigestBid_tokenid} onChange={(e)=>SetmyState({...myState,getHeigestBid_tokenid:e.target.value})}  placeholder='' className='form-control' />
                                 </div>
                                 <div className='col-md-12 mt-2'>
                                 &nbsp;&nbsp;&nbsp;<button className='btn btn-info' onClick={()=>getHighestBidFunc()} style={{float:'right'}}>call</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> &nbsp;&nbsp;&nbsp;
