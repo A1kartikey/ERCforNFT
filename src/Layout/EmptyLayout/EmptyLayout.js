@@ -25,9 +25,10 @@ export const EmptyLayout = ({ children }) => {
       <div className={styles.wrapper}>
         <div className={styles.navContainer}>
             <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===1 })} onClick={()=>setActiveTab(1)} to={'/'} >Home</Link>
-            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===2 })} onClick={()=>setActiveTab(2)} to={'/nft-market-place'} >Market Place</Link>
-            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===3 })} onClick={()=>setActiveTab(3)} to={'/nft-bidding-place'} >Bidding Place</Link>
-            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===4 })} onClick={()=>setActiveTab(4)} to={'/token-approve-page'} >Token Approve</Link>
+            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===2 })} onClick={()=>setActiveTab(2)} to={'/token-approve-page'} >Token Approve</Link>
+            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===3 })} onClick={()=>setActiveTab(3)} to={'/nft-market-place'} >Market Place</Link>
+            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===4 })} onClick={()=>setActiveTab(4)} to={'/nft-bidding-place'} >Bidding Place</Link>
+            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===5 })} onClick={()=>setActiveTab(5)} to={'/leadership-board'} >Leadership Board</Link>
         </div>
         <div className={styles.childrenContainer}>
             {children}

@@ -18,8 +18,8 @@ export const BiddingPlace =()=>{
     })
     const storeData = useSelector((state) => state.data);
     const blockchain = useSelector((state) => {console.log('checking bchain',state.blockchain); return state.blockchain});
-
-    useEffect(()=>{SetmyState({...myState, bidding_bid:storeData.nft_token})},[storeData])
+    console.log("Bidding place",{storeData})
+    useEffect(()=>{SetmyState({...myState, bidding_tokenid:storeData.nft_token})},[storeData])
     // const storeData = useSelector((state) => { SetmyState({...myState, bidding_bid:state.data.nft_token})});
     
     const listForNftFunction = () => {
@@ -123,7 +123,7 @@ export const BiddingPlace =()=>{
 
 
     return  <div className='market-place' style={{height:'100vh'}}>
-                {console.log(storeData)}
+                {console.log({storeData})}
                 <div className='row'>
                     <div className='col-md-12 mt-4 text-center text-white'>
                         <span className='header'>Bidding Place</span>
