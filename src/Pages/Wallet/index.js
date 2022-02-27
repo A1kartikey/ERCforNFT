@@ -4,11 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { connect } from "../../redux/blockchain/blockchainActions";
 import { fetchData, setDataTokenToStore } from "../../redux/data/dataActions";
 import * as s from "../../styles/globalStyles";
+import styles from './wallet.module.css';
 import styled from "styled-components";
 import { create } from "ipfs-http-client";
 import ReactSignatureCanvas from "react-signature-canvas";
 import { useHistory } from "react-router";
 import { FaFolderOpen } from 'react-icons/fa';
+import Button from "../../commons/Button/Button";
 
 const ipfsClient = create("https://ipfs.infura.io:5001/api/v0");
 
@@ -23,6 +25,7 @@ export const Wallet =()=>{
     const [metaResponseImg, setMetaRes]=useState({link1:'',link2:''});
     const [myState, setMyState] = useState({nftToken:''})
     const [loading , setLoading ] = useState(false);
+    const [isFileSelected, setIsFileSelected] = useState(false);
     //Pratik
     const [myfile,SetmyFile] = useState('');
     useEffect(()=>{
@@ -144,47 +147,32 @@ export const Wallet =()=>{
     }, [blockchain.smartContract, dispatch]);
   
     return (
-        <s.Screen>
-        {blockchain.account === "" || blockchain.smartContract === null ? (
-          <s.Container flex={1} ai={"center"} jc={"center"}>
-            <s.TextTitle>Connect to the Blockchain</s.TextTitle>
-            <s.SpacerSmall />
-            <StyledButton
-              onClick={(e) => {
+        <div className={styles.container}>
+        {(blockchain.account === "" || blockchain.smartContract === null) ? (
+          <div className={styles.connectBtnWrapper}>
+            <div className={styles.text}>Connect to the Blockchain</div>
+            <Button
+              onClicked={(e) => {
                 e.preventDefault();
                 dispatch(connect());
               }}
             >
               CONNECT
-            </StyledButton>
-            <s.SpacerSmall />
+            </Button>
             {blockchain.errorMsg !== "" ? (
-              <s.TextDescription>{blockchain.errorMsg}</s.TextDescription>
+              <div className={styles.text}>{blockchain.errorMsg}</div>
             ) : null}
-          </s.Container>
+          </div>
         ) : (
           <s.Container flex={1} ai={"center"} style={{ padding: 24 }}>
-            <s.TextTitle style={{ textAlign: "center" }}>
-              Welcome to mint your picture.
-            </s.TextTitle>
+            <div className={styles.text}>  Welcome to mint your picture.</div>
             {loading ? (
             <>
-              <s.SpacerSmall />
-              <s.TextDescription style={{ textAlign: "center" }}>
-                loading ...
-              </s.TextDescription>
+              <div className={styles.text}>  loading ... </div>
             </>
             ) : null }
-          {status !== "" ? (
-            <>
-              <s.SpacerSmall />
-              <s.TextDescription style={{ textAlign: "center" }}>
-                {status}
-              </s.TextDescription>
-            </>
-            ) : null }
-            <s.SpacerLarge />
-            {metaResponseImg.link1=='' && <StyledButton
+             {status && <div className={styles.text}>{status}</div>}
+            {(metaResponseImg.link1=='' && isFileSelected) && <StyledButton
               onClick={(e) => {
                 e.preventDefault();
                 startMintingProcess();
@@ -209,33 +197,35 @@ export const Wallet =()=>{
           <input type="file" style={{display:'none'}} name="file" id="uploadFiles" accept="image/png, image/svg, image/jpeg" onChange={(e)=>{
             
             const file = e.target.files[0];
-            file.arrayBuffer().then(buff => {
-              let x = new Uint8Array(buff);
-              console.log("buffer- -- ", x);
-              SetmyFile(x); 
-              // x is your uInt8Array
-              // perform all required operations with x here.
-          })
+            if(file?.name){
+              setIsFileSelected(true);
+              file.arrayBuffer().then(buff => {
+                let x = new Uint8Array(buff);
+                console.log("buffer- -- ", x);
+                SetmyFile(x); 
+                // x is your uInt8Array
+                // perform all required operations with x here.
+            })
+    
+              // encode the file using the FileReader API
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                // use a regex to remove data url part
+                const base64String = reader.result
+                  .replace("data:", "")
+                  .replace(/^.+,/, "");
+                  // SetmyFile(base64String);
   
-            // encode the file using the FileReader API
-            const reader = new FileReader();
-            reader.onloadend = () => {
-              // use a regex to remove data url part
-              const base64String = reader.result
-                .replace("data:", "")
-                .replace(/^.+,/, "");
-                // SetmyFile(base64String);
-
-
-
-              // log to console
-              // logs wL2dvYWwgbW9yZ...
-              // console.log(base64String);
   
-            };
-            console.log(reader.readAsDataURL(file))
-            // SetmyFile(reader.readAsDataURL(file));
-            
+  
+                // log to console
+                // logs wL2dvYWwgbW9yZ...
+                // console.log(base64String);
+    
+              };
+              console.log(reader.readAsDataURL(file))
+              // SetmyFile(reader.readAsDataURL(file));
+            }
           }}/>
           </label>
           
@@ -243,7 +233,8 @@ export const Wallet =()=>{
           }
           {/* history.push('/nft-market-place') */}
 
-          {status=="successfully minted your NFT :) !" && <div><span>Your NFT Token ID : </span><span>{myState.nftToken}</span></div>}
+          {status=="successfully minted your NFT :) !" &&  <div className={styles.text}> Your NFT Token ID : {myState.nftToken}</div>}
+         
           {/* {status=="successfully minted your NFT :) !" &&  */}
           <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken()}>Allow your NFT token on market place</button>
           
@@ -259,6 +250,6 @@ export const Wallet =()=>{
                 ref = {elementRef}/> */}
           </s.Container>
         )}
-      </s.Screen>
+      </div>
     )
 }

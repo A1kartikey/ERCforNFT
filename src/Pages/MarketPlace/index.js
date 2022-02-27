@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './MarketPlace.css';
 import { useDispatch, useSelector } from "react-redux";
+import styles from './MarketPlace.module.css'
 import { AiTwotoneCopy } from 'react-icons/ai';
 import { useHistory } from "react-router";
+import classNames from 'classnames';
+
 
 
 export const MarketPlace =()=>{
@@ -133,9 +136,7 @@ export const MarketPlace =()=>{
                     </div>
                     <div className='col-md-12 mt-5 d-flex justify-content-center'>
                         <div className='custom-card-body'>
-                            
-
-                            <div className='row mt-3'>
+                            <div className={classNames('row mt-3', styles.rowStyles)}>
                                 <div className='col-md-12'>
                                     List NFT for sale
                                 </div>
@@ -149,8 +150,7 @@ export const MarketPlace =()=>{
                                     <button className='btn btn-warning'onClick={()=>listForNftFunction()} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
                                 </div>
                             </div>
-
-                            <div className='row mt-3'>
+                            <div className={classNames('row mt-3', styles.rowStyles)}>
                                 <div className='col-md-12'>
                                     Transfer NFT
                                 </div>
@@ -165,7 +165,7 @@ export const MarketPlace =()=>{
                                 </div>
                             </div>
 
-                            <div className='row mt-3'>
+                            <div className={classNames('row mt-3', styles.rowStyles)}>
                                 <div className='col-md-12'>
                                     Stop Bid
                                 </div>
@@ -179,7 +179,7 @@ export const MarketPlace =()=>{
                                     <button className='btn btn-warning' onClick={stopBiddingFunc} style={{float:'right'}}>transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 
                                 </div>
                             </div>
-                            <div className='row mt-5'>
+                            <div className={classNames('row mt-5', styles.rowStyles)}>
                             <div className='col-md-12'>
                                     {/* <button className='btn btn-info'>contractaddress</button> */}
                                 </div>
@@ -197,7 +197,6 @@ export const MarketPlace =()=>{
                                 </div>
                                 <div className='col-md-12 mt-2 mb- text-white'>
                                 {myState.receipt_of_highestBid !='' && <div className='row'>
-                                        
                                           <div className='col-md-3 text-info'>Bid Winner (address)</div><div className='col-md-1 text-info'>:</div><div  className='col-md-8'>{myState.receipt_of_highestBid[0]}</div>
                                           <div className='col-md-3 text-info'>Highest Bid Amount</div><div className='col-md-1 text-info'>:</div><div  className='col-md-8'>{myState.receipt_of_highestBid[1]}</div>
                                           <div className='col-md-3 text-info'>Bid Status</div><div className='col-md-1 text-info'>:</div><div  className='col-md-8'>{myState.receipt_of_highestBid[2]==true?<span className='text-success'>ACTIVE</span>:<span className='text-danger'>CLOSED</span>}</div>

@@ -129,7 +129,7 @@ export const BiddingPlace =()=>{
                         <span className='header'>Bidding Place</span>
                     </div>
                     <div className='col-md-12 mt-5 d-flex justify-content-center'>
-                        <div className='custom-card-body'>
+                        <div className='custom-card-body biddingPlace-Card'>
                             <div className='row'>
                                 {console.log("-- ",myState.bidding_tokenid,myState.bidding_bid)}
                                 <div className='col-md-12'>
