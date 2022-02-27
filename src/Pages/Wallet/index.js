@@ -156,9 +156,8 @@ export const Wallet =()=>{
                 e.preventDefault();
                 dispatch(connect());
               }}
-            >
-              CONNECT
-            </Button>
+              text='CONNECT'
+            />
             {blockchain.errorMsg !== "" ? (
               <div className={styles.text}>{blockchain.errorMsg}</div>
             ) : null}
@@ -239,7 +238,7 @@ export const Wallet =()=>{
           <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken()}>Allow your NFT token on market place</button>
           
           {/* {status=="successfully minted your NFT :) !"  &&  */}
-          <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken2()}>Allow your coins on market place</button>
+          {/* <button className="mt-3 mb-3 btn btn-secondary"  onClick={()=> approveNftToken2()}>Allow your coins on market place</button> */}
           
           {metaResponseImg.link1!='' && status=="successfully minted your NFT :) !" && <img src={metaResponseImg.link1} style={{width:'100%',height:'100%'}}/>}
           
