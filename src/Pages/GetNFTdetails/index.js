@@ -33,13 +33,16 @@ export const GetNFTdetails =()=>{
       // .once("error",(err) => {
       //   console.log(err) ;
       // })
-      .then((URL)=>{
-        console.log("Img URL: ",URL);
-        setURL(URL);
-        setLoading(false);
+      .then((imgURL)=>{
+        console.log(imgURL)
+        if(imgURL){
+          fetch(imgURL).then(res=>res.json()).then((jsonData)=>{
+            setURL(jsonData?.image ? jsonData.image : imgURL);
+            console.log("Img URL: ",{jsonData});
+          }).catch(e=>console.log(e))
+        }
         // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
         // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
-        setStatus("successfully approved your coins to marketplace :) !");
       })
       .catch(e=>{
         console.log('Aprrover NFT Token : ',e)
@@ -47,7 +50,7 @@ export const GetNFTdetails =()=>{
     }
 
     console.log("tokenId : ",tokenId)
-    return (<div className='market-place' style={{height:'100vh'}}>
+    return (<div className='market-place getNFTdetails' >
     <div className='row'>
         <div className='col-md-12 mt-4 text-center text-white'>
             <span className='header'>Get NFT Details</span>
@@ -71,5 +74,8 @@ export const GetNFTdetails =()=>{
             </div>
         </div>
     </div>
+    {URL && <div className={styles.imageWrapper}>
+          <img src={URL} className={styles.img}/>
+    </div>}
 </div>)
 }

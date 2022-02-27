@@ -47,7 +47,7 @@ export const LeaderShipBoard =()=>{
     }
 
     console.log("address : ",address)
-    return (<div className='market-place' style={{height:'100vh'}}>
+    return (<div className='market-place'>
     <div className='row'>
         <div className='col-md-12 mt-4 text-center text-white'>
             <span className='header'>LEADERSHIP BOARD</span>

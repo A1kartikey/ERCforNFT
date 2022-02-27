@@ -61,3 +61,9 @@ background-color: #2C2C2D;
     background-color: #bcc0c0;
     box-shadow: 4px 3px 7px grey;
 }
+
+.getNFTdetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -14,8 +14,6 @@ import { GetNFTdetails } from "./Pages/GetNFTdetails";
 
 
 function App() {
-
-
   return (
     <Router>
       <Switch>

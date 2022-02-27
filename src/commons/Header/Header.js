@@ -8,6 +8,9 @@ const Header = () => {
             <div className={styles.leftContainer}>
                 <div className={styles.headingText} onClick={()=>history.push('/')}>My Wallet</div>
             </div>
+            <div id='headerRightContainer' className={styles.rightContainer}>
+                
+            </div>
         </div>
     )
 }

@@ -122,7 +122,7 @@ export const BiddingPlace =()=>{
       }
 
 
-    return  <div className='market-place' style={{height:'100vh'}}>
+    return  <div className='market-place'>
                 {console.log({storeData})}
                 <div className='row'>
                     <div className='col-md-12 mt-4 text-center text-white'>
