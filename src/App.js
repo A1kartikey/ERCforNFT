@@ -9,6 +9,7 @@ import { BiddingPlace } from "./Pages/BiddingPlace";
 import { TokenApprovePage } from "./Pages/TokenApprovePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { LeaderShipBoard } from "./Pages/LeaderShipBoard";
+import { GetNFTdetails } from "./Pages/GetNFTdetails";
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <RouteWithLayout layout={EmptyLayout} path="/nft-bidding-place"  component={BiddingPlace}></RouteWithLayout>
         <RouteWithLayout layout={EmptyLayout} path="/token-approve-page"  component={TokenApprovePage}></RouteWithLayout>
         <RouteWithLayout layout={EmptyLayout} path="/leadership-board"  component={LeaderShipBoard}></RouteWithLayout>
+        <RouteWithLayout layout={EmptyLayout} path="/getNFTDetails"  component={GetNFTdetails}></RouteWithLayout>
       </Switch>
     </Router>
   );

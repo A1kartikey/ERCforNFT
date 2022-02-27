@@ -29,6 +29,7 @@ export const EmptyLayout = ({ children }) => {
             <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===3 })} onClick={()=>setActiveTab(3)} to={'/nft-market-place'} >Market Place</Link>
             <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===4 })} onClick={()=>setActiveTab(4)} to={'/nft-bidding-place'} >Bidding Place</Link>
             <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===5 })} onClick={()=>setActiveTab(5)} to={'/leadership-board'} >Leadership Board</Link>
+            <Link className={classNames(styles.navLink,{[styles.activeTab]: activeTab===6 })} onClick={()=>setActiveTab(6)} to={'/getNFTDetails'} >Get NFT Details</Link>
         </div>
         <div className={styles.childrenContainer}>
             {children}

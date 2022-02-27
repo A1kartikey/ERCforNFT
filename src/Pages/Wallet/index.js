@@ -37,8 +37,8 @@ export const Wallet =()=>{
     const [NFTS , setNFTS] = useState([]);
     const elementRef = useRef() ;
     const ipfsBaseUrl = "https://ipfs.infura.io/ipfs/";
-    const name = "Signature NFT " ;
-    const description = "My signature NFT !!"
+    const name = "KPMG NFT " ;
+    const description = "This NFT belongs to me !!"
   
   
     const mint = (_uri) => {
@@ -118,7 +118,7 @@ export const Wallet =()=>{
       const addedMetadata = await ipfsClient.add(JSON.stringify(metadataObj));
   
       console.log ('IPFS IMG URL -- ',metadataObj.image) ;
-      mint(metadataObj.image)
+      mint(ipfsBaseUrl + addedMetadata.path)
       // mint(ipfsBaseUrl + addedMetadata.path) ;
   
       }catch(err) {
