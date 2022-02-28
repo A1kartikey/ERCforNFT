@@ -129,9 +129,14 @@ export const MarketPlace =()=>{
 
     const getAllBids = () => {
       console.log('Approver running ... ',myState.getHeigestBid_tokenid, blockchain.account3)
-      blockchain.smartContract3.Bid.then(res=>{
-        console.log(res);
-    })
+        blockchain.smartContract3.getPastEvents('Bid', {
+          filter: {}, // Using an array means OR: e.g. 20 or 23
+          fromBlock: 0,
+          toBlock: 'latest'
+      }, function(error, events){ console.log(events); })
+      .then(function(events){
+          console.log(events[0].returnValues) // same results as the optional callback above
+      });
       
       
       // .getHeigestBid(myState.getHeigestBid_tokenid)
