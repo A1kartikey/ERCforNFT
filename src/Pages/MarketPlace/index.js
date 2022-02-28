@@ -127,6 +127,30 @@ export const MarketPlace =()=>{
         })
       }
 
+    const getAllBids = () => {
+      console.log('Approver running ... ',myState.getHeigestBid_tokenid, blockchain.account3)
+      blockchain.smartContract3.Bid.then(res=>{
+        console.log(res);
+    })
+      
+      
+      // .getHeigestBid(myState.getHeigestBid_tokenid)
+      // .call({from:blockchain.account3})
+      // // .once("error",(err) => {
+      // //   console.log(err) ;
+      // // })
+      // .then((receipt)=>{
+      //   console.log("receipt: ",receipt);
+      //   SetmyState({...myState,receipt_of_highestBid:receipt})
+      // //   setLoading(false);
+      //   // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
+      //   // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
+      // //   setStatus("successfully approved your coins to marketplace :) !");
+      // })
+      // .catch(e=>{
+      //   console.log('Aprrover NFT Token : ',e)
+      // })
+    }
 
     return  <div className='market-place'>
                 {console.log(storeData)}
@@ -202,6 +226,13 @@ export const MarketPlace =()=>{
                                           <div className='col-md-3 text-info'>Bid Status</div><div className='col-md-1 text-info'>:</div><div  className='col-md-8'>{myState.receipt_of_highestBid[2]==true?<span className='text-success'>ACTIVE</span>:<span className='text-danger'>CLOSED</span>}</div>
                                        
                                     </div>}
+                                </div>
+                            </div>
+                             <div className='row mt-5'>
+                                <div className='col-md-12'>
+                                  <button className='btn btn-secondary' onClick={()=>{
+                                    getAllBids();
+                                  }}>Get All Bids Coming In</button>
                                 </div>
                             </div>
                             {/* <div className='row mt-2'>
