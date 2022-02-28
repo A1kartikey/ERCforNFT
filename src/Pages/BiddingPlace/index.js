@@ -4,6 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiTwotoneCopy } from 'react-icons/ai';
 import { useHistory } from "react-router";
 
+const names = [
+  {
+    id: 0,
+    title : ""
+  },
+  {
+    id: 1,
+    title: "Kartikey"
+  },
+  {
+    id: 2,
+    title: "Abhilash"
+  },
+  {
+    id: 3,
+    title: "Arunava"
+  }
+]
 
 export const BiddingPlace =()=>{
     const history = useHistory();
@@ -13,8 +31,8 @@ export const BiddingPlace =()=>{
         listNFTforsale_tokenid:'',
         nftBuy_tokenid:'',
         stopBid_tokenid:'',
-        getHeigestBid_tokenid:''
-
+        getHeigestBid_tokenid:'',
+        bidding_name: ''
     })
     const storeData = useSelector((state) => state.data);
     const blockchain = useSelector((state) => {console.log('checking bchain',state.blockchain); return state.blockchain});
@@ -43,9 +61,13 @@ export const BiddingPlace =()=>{
       }
 
       const biddingFunc = () => {
+        if(myState.bidding_name.length === 0){
+          alert("Select a valid name");
+          return;
+        }
         console.log('Approver running ... ')
         blockchain.smartContract3.methods
-        .bidding(myState.bidding_tokenid,myState.bidding_bid)
+        .bidding(myState.bidding_tokenid,myState.bidding_bid,myState.bidding_name)
         .send({ from: blockchain.account3})
         .once("error",(err) => {
           console.log(err) ;
@@ -121,6 +143,10 @@ export const BiddingPlace =()=>{
         })
       }
 
+    const getNameOptions = () =>{
+      return names.map(item=> <option value={item.title} key={item.id}>{item.title}</option>)
+    }
+
 
     return  <div className='market-place'>
                 {console.log({storeData})}
@@ -146,6 +172,15 @@ export const BiddingPlace =()=>{
                                 </div>
                                 <div className='col-md-7 mt-2'>
                                     <input type="number"  value={myState.bidding_bid} onChange={(e)=>SetmyState({...myState,bidding_bid:e.target.value})}  placeholder='' className='form-control' />
+                                </div>
+                                <div className='col-md-5 mt-2'>
+                                    <div style={{widthL:'100%',float:'right'}}>Name</div>
+                                </div>
+                                <div className='col-md-7 mt-2'>
+                                    {/* drop-down */}
+                                    <select type="dro"  value={myState.bidding_name} onChange={(e)=>SetmyState({...myState,bidding_name:e.target.value})}  placeholder='' className='form-control'>
+                                      {getNameOptions()}
+                                    </select>
                                 </div>
                                 <div className='col-md-12 mt-2'>
                                     <button className='btn btn-warning' onClick={biddingFunc} style={{float:'right'}}>Transact</button> <AiTwotoneCopy color={'#fff'} size={20}  style={{float:'right'}}></AiTwotoneCopy> 

@@ -36,7 +36,7 @@ export const LeaderShipBoard =()=>{
       Promise.all(addresses.map((item)=>blockchain?.smartContract2?.methods
       .balanceOf(item.addr)
       .call({ from: blockchain.account2}))).then((responses)=>{
-        console.log("Resust : ************ : ", responses)
+        console.log("Resust : ************ : ", responses);
         //return Promise.all(responses.map((response)=>response?.json()));
       }).then((res)=>{
       })
