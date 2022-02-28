@@ -3,6 +3,47 @@
         {
             "inputs": [
                 {
+                    "internalType": "address",
+                    "name": "tokenAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "NFTAddress",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "NFTid",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "from",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Bid",
+            "type": "event"
+        },
+        {
+            "inputs": [
+                {
                     "internalType": "uint256",
                     "name": "_tokenId",
                     "type": "uint256"
@@ -11,6 +52,11 @@
                     "internalType": "uint256",
                     "name": "_bid",
                     "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_name",
+                    "type": "string"
                 }
             ],
             "name": "bidding",
@@ -56,22 +102,6 @@
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "tokenAddress",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "NFTAddress",
-                    "type": "address"
-                }
-            ],
-            "stateMutability": "nonpayable",
-            "type": "constructor"
         },
         {
             "inputs": [],
@@ -139,7 +169,7 @@
           "3": {
             "events": {},
             "links": {},
-            "address": "0x651541E33DCc1f6206bfa31538a0044EA90c0757",
+            "address": "0x21496Ee65EB7bfa3298409F104Ff335A949f2a71",
             "transactionHash": "0x9df9cb330889452ac29fcb6a8d963c3a7432b514ef2c16d8144fc9602fa31766"
           }
         }   

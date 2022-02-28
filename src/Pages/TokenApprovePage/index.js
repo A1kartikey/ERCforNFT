@@ -25,7 +25,7 @@ export const TokenApprovePage =()=>{
     const approveNftToken2 = () => {
       console.log('Approver running ... ')
       blockchain?.smartContract2?.methods
-      .approve('0x651541E33DCc1f6206bfa31538a0044EA90c0757', 20000000)
+      .approve('0x21496Ee65EB7bfa3298409F104Ff335A949f2a71', 20000000)
       .send({ from: blockchain.account2})
       .once("error",(err) => {
         console.log(err) ;
