@@ -24,27 +24,59 @@ export const LeaderShipBoard =()=>{
         dispatch(fetchData(blockchain.account));
       }
     }, [blockchain.smartContract, dispatch]);
+
+    const addresses = [
+      {name:'name1', addr: '0xAa656533b9B29f2d2ACb7444c75859355BE514fe'},
+      {name:'name2', addr: '0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73'},
+      {name:'name3', addr: '0x0cBcD7f3fD403f49b50efaC09d942f701177087D'},
+    ]
    
     const approveNftToken2 = () => {
       console.log('Approver running ... ')
-      blockchain?.smartContract2?.methods
-      .balanceOf(address)
-      .call({ from: blockchain.account2})
+      Promise.all(addresses.map((item)=>blockchain?.smartContract2?.methods
+      .balanceOf(item.addr)
+      .call({ from: blockchain.account2}))).then((responses)=>{
+        console.log("Resust : ************ : ", responses)
+        //return Promise.all(responses.map((response)=>response?.json()));
+      }).then((res)=>{
+      })
+      
       // .once("error",(err) => {
       //   console.log(err) ;
       // })
-      .then((receiptNumber)=>{
-        console.log("receipt: ",receiptNumber);
-        setReceipt(receiptNumber);
-        setLoading(false);
-        // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
-        // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
-        setStatus("successfully approved your coins to marketplace :) !");
-      })
+      // .then((receiptNumber)=>{
+      //   console.log("receipt: ",receiptNumber);
+      //   setReceipt(receiptNumber);
+      //   setLoading(false);
+      //   // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
+      //   // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
+      //   setStatus("successfully approved your coins to marketplace :) !");
+      // })
       .catch(e=>{
         console.log('Aprrover NFT Token : ',e)
       })
     }
+
+    // const approveNftToken2 = () => {
+    //   console.log('Approver running ... ')
+    //   blockchain?.smartContract2?.methods
+    //   .balanceOf(address)
+    //   .call({ from: blockchain.account2})
+    //   // .once("error",(err) => {
+    //   //   console.log(err) ;
+    //   // })
+    //   .then((receiptNumber)=>{
+    //     console.log("receipt: ",receiptNumber);
+    //     setReceipt(receiptNumber);
+    //     setLoading(false);
+    //     // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
+    //     // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
+    //     setStatus("successfully approved your coins to marketplace :) !");
+    //   })
+    //   .catch(e=>{
+    //     console.log('Aprrover NFT Token : ',e)
+    //   })
+    // }
 
     console.log("address : ",address)
     return (<div className='market-place'>
