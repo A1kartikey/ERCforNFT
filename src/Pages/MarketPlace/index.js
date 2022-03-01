@@ -17,10 +17,11 @@ export const MarketPlace =()=>{
         nftBuy_tokenid:'',
         stopBid_tokenid:'',
         getHeigestBid_tokenid:'',
-
         receipt_of_highestBid:''
+    });
 
-    })
+    const [allBids, setAllBids] = useState([]);
+
     const storeData = useSelector((state) => state.data);
     const blockchain = useSelector((state) => {console.log('checking bchain',state.blockchain); return state.blockchain});
 
@@ -133,29 +134,31 @@ export const MarketPlace =()=>{
           filter: {}, // Using an array means OR: e.g. 20 or 23
           fromBlock: 0,
           toBlock: 'latest'
-      }, function(error, events){ console.log(events); })
-      .then(function(events){
-          console.log(events[0].returnValues) // same results as the optional callback above
+      }, function(error, events){ 
+          setAllBids(events);
       });
-      
-      
-      // .getHeigestBid(myState.getHeigestBid_tokenid)
-      // .call({from:blockchain.account3})
-      // // .once("error",(err) => {
-      // //   console.log(err) ;
-      // // })
-      // .then((receipt)=>{
-      //   console.log("receipt: ",receipt);
-      //   SetmyState({...myState,receipt_of_highestBid:receipt})
-      // //   setLoading(false);
-      //   // setMyState({...myState, nftToken:receipt.events.Transfer.returnValues.tokenId})
-      //   // dispatch(setDataTokenToStore(receipt.events.Transfer.returnValues.tokenId))
-      // //   setStatus("successfully approved your coins to marketplace :) !");
-      // })
-      // .catch(e=>{
-      //   console.log('Aprrover NFT Token : ',e)
-      // })
     }
+
+    console.log("all bids", allBids);
+
+    const getAllBidsList = () =>{
+      return allBids.map(item=>{
+        return(
+            <div className='row mb-3'>
+              <div className='col-md-3'>
+                {item["returnValues"]["NFTid"]}
+              </div>
+              <div className='col-md-4'>
+                {item["returnValues"]["from"]}
+              </div>
+              <div className='col-md-4'>
+                {item["returnValues"]["amount"]}
+              </div>
+            </div>
+        )
+      })
+    }
+
 
     return  <div className='market-place'>
                 {console.log(storeData)}
@@ -240,11 +243,25 @@ export const MarketPlace =()=>{
                                   }}>Get All Bids Coming In</button>
                                 </div>
                             </div>
-                            {/* <div className='row mt-2'>
-                                <div className='col-md-12'>
-                                  <button className='btn btn-secondary' onClick={()=>history.push('/nft-bidding-place')}>Navigate to Bidding</button>
+                            {
+                              allBids.length ? 
+                              (
+                                <div className={classNames('mt-3 w-100 pt-2', styles.rowStyles)}>
+                                   <div className='row mb-4'>
+                                    <div className='col-md-3'>
+                                      <b>NFT ID</b>
+                                    </div>
+                                    <div className='col-md-4'>
+                                      <b>From</b>
+                                    </div>
+                                    <div className='col-md-4'>
+                                    <b>Amount</b>
+                                    </div>
+                                  </div>
+                                  {getAllBidsList()}
                                 </div>
-                            </div> */}
+                              ) : null
+                            }
                         </div>
                     </div>
                 </div>

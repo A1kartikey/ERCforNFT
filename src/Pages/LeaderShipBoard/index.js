@@ -9,12 +9,6 @@ import classNames from 'classnames';
 import Button from '../../commons/Button/Button';
 import { fetchData } from '../../redux/data/dataActions';
 
-const addresses = [
-  {name:'name1', addr: '0xAa656533b9B29f2d2ACb7444c75859355BE514fe'},
-  {name:'name2', addr: '0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73'},
-  {name:'name3', addr: '0x0cBcD7f3fD403f49b50efaC09d942f701177087D'}
-];
-
 export const LeaderShipBoard =()=>{
     const history = useHistory();
     const blockchain = useSelector((state) => state.blockchain);
@@ -22,7 +16,13 @@ export const LeaderShipBoard =()=>{
     const [status ,setStatus] = useState("");
     const [address ,setAddress] = useState("");
     const [receipt ,setReceipt] = useState("");
-    const [leaderBoard, setLeaderBoard] =  useState([]);
+    const [addresses, setAddresses] = useState([
+      {name:'name1', addr: '0xAa656533b9B29f2d2ACb7444c75859355BE514fe'},
+      {name:'name2', addr: '0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73'},
+      {name:'name3', addr: '0x0cBcD7f3fD403f49b50efaC09d942f701177087D'}
+    ]);
+    const [allLeadershipFlag, setAllLeadershipFlag] = useState(false);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -37,7 +37,12 @@ export const LeaderShipBoard =()=>{
       .balanceOf(item.addr)
       .call({ from: blockchain.account2}))).then((responses)=>{
         console.log("Resust : ************ : ", responses)
-        setLeaderBoard(responses);
+        const temp = [...addresses];
+        addresses.forEach((item, index)=>{
+            temp[index]["amount"] = responses[index];
+        });
+        setAddresses(temp.sort((a,b)=>b.amount-a.amount));
+        setAllLeadershipFlag(true);
       }).catch(e=>{
         console.log('Aprrover NFT Token : ',e)
       })
@@ -61,8 +66,6 @@ export const LeaderShipBoard =()=>{
         console.log('Aprrover NFT Token : ',e)
       })
     }
-
-    console.log("address : ",addresses, leaderBoard);
 
     return (<div className='market-place'>
     <div className='row'>
@@ -91,24 +94,38 @@ export const LeaderShipBoard =()=>{
           </div>
         </div>
         {
-          leaderBoard.length ? (
+          allLeadershipFlag ? (
             <div className='col-md-12 mt-5 d-flex justify-content-center'>
             <div className='custom-card-body biddingPlace-Card'>
+            <div className='row mb-3'>
+                      <div className='col-md-1'>
+                        Ranking
+                      </div>
+                      <div className='col-md-2'>
+                          Name
+                      </div>
+                      <div className='col-md-7'>
+                        Address
+                      </div>
+                      <div className='col-md-2'>
+                        Amount
+                      </div>
+            </div>
               {
-                leaderBoard.map((item, index) =>{
+                addresses.map((item, index) =>{
                   return(
                     <div key={index} className='row mb-2'>
                       <div className='col-md-1'>
                         {index + 1}
                       </div>
                       <div className='col-md-2'>
-                          {addresses[index]["name"]}
+                          {item["name"]}
                       </div>
                       <div className='col-md-7'>
-                        {addresses[index]["addr"]}
+                        {item["addr"]}
                       </div>
                       <div className='col-md-2'>
-                        {item}
+                        {item["amount"]}
                       </div>
                     </div>
                   )
