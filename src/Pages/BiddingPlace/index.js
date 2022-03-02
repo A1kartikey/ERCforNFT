@@ -11,15 +11,18 @@ const names = [
   },
   {
     id: 1,
-    title: "Kartikey"
+    title: "Rambagh Palace"
   },
   {
     id: 2,
-    title: "Abhilash"
+    title: "Amer Palace"
   },
   {
     id: 3,
-    title: "Arunava"
+    title: "Jal Mahal"
+  },  {
+    id: 4,
+    title: "Hawa Mahal"
   }
 ]
 
