@@ -17,9 +17,28 @@ export const LeaderShipBoard =()=>{
     const [address ,setAddress] = useState("");
     const [receipt ,setReceipt] = useState("");
     const [addresses, setAddresses] = useState([
-      {name:'name1', addr: '0xAa656533b9B29f2d2ACb7444c75859355BE514fe'},
-      {name:'name2', addr: '0xFE3B557E8Fb62b89F4916B721be55cEb828dBd73'},
-      {name:'name3', addr: '0x0cBcD7f3fD403f49b50efaC09d942f701177087D'}
+      {name:'Team 1', addr: '0x0cBcD7f3fD403f49b50efaC09d942f701177087D'},
+      {name:'Team 2', addr: '0x766781E665a18723146FF6AFCE30cFD3a5F2b55c'},
+      {name:'Team 3', addr: '0x1b2cC63AD3897087194769106F36B26208EaFdeF'},
+      {name:'Team 4', addr: '0xE1A8E1B7AFb065Cf8eCd825c6F589fe82Ab2f6bA'},
+      {name:'Team 5', addr: '0xcB3077C1707AEb51e9064019294FbBc3b8f8412B'},
+      {name:'Team 6', addr: '0xb2459D976Ee7D04e5920aABe29970A36f15cBC77'},
+      {name:'Team 7', addr: '0x126B83a24eF032baBd4eF3Be5B72e6AFcaE4265C'},
+      {name:'Team 8', addr: '0x92De592C78124Cb65c4661f544de61292FA7E2Ab'},
+      {name:'Team 9', addr: '0x74643382907907304A3b6BB5EE8Df1ddBE16184A'},
+      {name:'Team 10', addr: '0xcE799e65441E3C9CCe2fab28218Af61699CA6702'},
+      {name:'Team 11', addr: '0x8081DDa005B2CE10c8F6dF0d6f893ce5E09eD7D1'},
+      {name:'Team 12', addr: '0x356DF19f1985cFe379d7C6bDBC992329a277b864'},
+      {name:'Team 13', addr: '0x82274A34eFc2A250ee4d6d04A9C8B855E09c07D8'},
+      {name:'Team 14', addr: '0x3b9f278C09bFDEb7C48ef20C794cC9aD3003543a'},
+      {name:'Team 15', addr: '0xBd8d49a238cFB6Ba855b9320F6c2c00d909F9DF9'},
+      {name:'Team 16', addr: '0x7E2Bc20a6e840B5003B6773240C22AfF0Ebf14b7'},      
+      {name:'Team 17', addr: '0x0864E0588967C9DD8df1b3ca63E94BD14A0D7fA8'},      
+      {name:'Team 18', addr: '0x120cf40C292F5E972fAB2bEf70acde14cE54bb59'},      
+      {name:'Team 19', addr: '0x9863CCDf790cf2645c9D872C725Db4E8052353EB'},
+      {name:'Team 20', addr: '0xC360e5E3B1834D7e146c95aDdDf72d87BAf42101'},
+
+
     ]);
     const [allLeadershipFlag, setAllLeadershipFlag] = useState(false);
 
